@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://d3js.org/d3.v4.min.js"></script>	
+
+</head>
+<body>
+
+	<script>
+
+		var dataArray = [20,40,60];
+		
+		var canvas = d3.select("body")
+						.append("svg")
+						.attr("width",1000)
+						.attr("height",1000)
+						.append("g")
+						.attr("transform","translate(150,20)");
+
+		var widthScale = d3.scale.linear()
+								  .domain([0,60])
+								  .range([0,1000]);
+
+		var axis = d3.svg.axis()
+						 .scale(widthScale);
+
+		var circle = canvas.append("circle")
+							.attr("cx",50)
+							.attr("cy",400)
+							.attr("r",20)
+							.attr("fill","red");
+
+		
+
+		circle.transition()
+				.duration(1500)
+				.attr("cx",400)
+				.each("end",function(){ d3.select(this).attr('fill','green') })
+				.transition()
+				.attr("cy",800)
+				.each("end",function(){ d3.select(this).attr('fill','blue') })
+				.transition()
+				.attr("cx",100)
+				.each("end",function(){ d3.select(this).attr('fill','yellow') })
+				.transition()
+				.attr("cy",400)
+				.each("end",function(){ d3.select(this).attr('fill','black') });
+
+		var bar = canvas.selectAll("rect")
+						.data(dataArray)
+						.enter()
+							.append("rect")
+							.attr("width",function(d) { return d*10; })
+							.attr("height",50)
+							.attr("y", function(d,i) { return i*100; });
+
+		canvas.append("g")
+				.attr("transform","translate(0,300)")
+				.call(axis);
+
+
+
+
+	</script>
+
+</body>
+</html>
