@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- <script src="../d3.v3.js"></script> -->
+<script src="d3.punchcard.js"></script>
+<style type="text/css">
+svg {
+  font: 10px sans-serif;
+}
+.axis path,.axis line {
+	fill: none;
+	stroke: #b6b6b6;
+	shape-rendering: crispEdges;
+}
+.tick text{
+	fill: #999;
+}
+g.journal.active{
+	cursor:pointer;
+}
+text.label{
+	font-size:12px;font-weight:bold;cursor:pointer;
+}
+text.value{
+	font-size:12px;font-weight:bold;
+}
+</style>
+</head>
+<body>
+<div id="chart"></div>
+<script type="text/javascript">
+// Define mocked data
+var data = [
+{
+	key: "January",
+	values: [
+						{key: "2004", value: 10},
+						{key: "2005", value: 4},
+						{key: "2006", value: 10},
+						{key: "2007", value: 11},
+						{key: "2008", value: 6},
+						{key: "2009", value: 10},
+						{key: "2010", value: 16}
+					]
+},
+{
+	key: "February",
+	values: [
+						{key: "2004", value: 2},
+						{key: "2005", value: 4},
+						{key: "2006", value: 10},
+						{key: "2007", value: 7},
+						{key: "2008", value: 20},
+						{key: "2009", value: 6},
+						{key: "2010", value: 18}
+					]
+},
+{
+	key: "March",
+	values: [
+						{key: "2004", value: 1},
+						{key: "2005", value: 2},
+						{key: "2006", value: 3},
+						{key: "2007", value: 4},
+						{key: "2008", value: 6},
+						{key: "2009", value: 10},
+						{key: "2010", value: 4}
+					]
+},
+{
+	key: "April",
+	values: [
+						{key: "2004", value: 1},
+						{key: "2005", value: 2},
+						{key: "2006", value: 3},
+						{key: "2007", value: 4},
+						{key: "2008", value: 6},
+						{key: "2009", value: 10},
+						{key: "2010", value: 4}
+					]
+}
+];
+
+// Create Punchcard
+var punchcard = punchcard()
+									.$el(d3.select("#chart"))
+									.data(data)
+									.render();
+
+
+</script>
+
+</body>
+</html>
